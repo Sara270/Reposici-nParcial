@@ -5,52 +5,51 @@
  *      Author: Sara
  */
 
+#include "Pila.h"
 #include <iostream>
-#include <stdlib.h> /// biblioteca utilizada para el new
-using namespace std;
 
-struct Nodo{
-	int dato;
-	Nodo *siguiente;
-};
-Nodo *pila =NULL;
-////Prototipo
-void Push(Nodo *&, int);
-void Pop(Nodo *&,  int&);
-int main2() {
-    int dato;
-
-    cout<<"Ingrese un número ";
-    cin>>dato;
-    Push(pila, dato);
-    cout<<"Ingrese un número ";
-    cin>>dato;
-    Push(pila, dato);
-    cout<<"\nSacando elementos ";
-
-    while((pila != NULL)){ // mientras no sea el final de la pila
-    	Pop(pila, dato);
-    	if(pila != NULL){
-    		cout << dato<< ", ";
-    	}else{
-    		cout << dato << ".";
-    	}
-    }
-
-
-
-	return 0;
+Pila::Pila (){
+	this->pila= new Nodo1(0);
+}
+Pila::~Pila(){
 }
 
-void Push(Nodo *&pila, int num){
-	Nodo *newNodo = new Nodo(); // creo un espacio en la memoria
-	newNodo->dato=num; //carga valor dentro del nodo
-	newNodo->siguiente= pila; //carga el puntero pila dentro del nodo
-	pila = newNodo; //asigna el nuevo nodo a pila
+//Metodo de pila que agrega
+void Pila :: Push(Nodo1 *&pila, int num){
+	Nodo1 *newNodo = new Nodo1(num);       // creo un espacio en la memoria
+	newNodo->dato=num;                     //carga valor dentro del nodo
+	newNodo->siguiente= pila;              //carga el puntero pila dentro del nodo
+	pila = newNodo;                        //asigna el nuevo nodo a pila
 }
-void Pop(Nodo *&pila, int &n){
-	Nodo *aux = pila;
+//Metodo de pila que saca
+void Pila :: Pop(Nodo1 *&pila, int &n){
+	Nodo1 *aux = pila;
 	n=aux->dato;
 	pila = aux->siguiente;
 	delete aux;
 }
+//////////////// PROBLEMA 2  ///////////////////////
+Nodo1 Pila :: retornar(Nodo1 *&p, int nuevo, int viejo){
+    Nodo1 *tmp = new Nodo1(0);
+    Nodo1 *aux = new Nodo1(0);
+    aux = p;                     //// variable que sirve para modificar el puntero
+    tmp = aux->siguiente;        //// variable que sirve para modificar el valor
+
+    if(aux-> dato == viejo){
+    	aux->dato = nuevo;
+    	//return aux;
+    }
+    while(tmp != NULL){
+    	if(tmp -> dato == viejo){
+    		tmp->dato=nuevo;
+    		aux->siguiente=tmp;
+    		//return p;             //// retornara la pila modificada
+    	}else{
+    		tmp = tmp->siguiente;
+    		aux = aux->siguiente;
+    	}
+    }
+  //return p;                      //// en caso de no encontrar el valor viejo, retornara la pila original
+
+}
+

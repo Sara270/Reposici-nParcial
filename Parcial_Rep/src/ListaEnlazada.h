@@ -7,15 +7,20 @@
 
 #ifndef LISTAENLAZADA_H_
 #define LISTAENLAZADA_H_
-
-namespace lab05 {
+#include "Nodo1.h"
+#include <iostream>
 
 class ListaEnlazada {
 public:
-	ListaEnlazada();
-	virtual ~ListaEnlazada();
-};
+	ListaEnlazada ();
+		    ~ListaEnlazada ();
 
-} /* namespace lab05 */
+		Nodo1 *lista;
+		void AddLinkedList(int n);
+		void ShowLinkedList(Nodo1 *lista);
+		void BuscarLinkedList(Nodo1 *lista, int n);
+		void EliminarNodo(Nodo1 *&lista, int n);
+		void Menu();
+};
 
 #endif /* LISTAENLAZADA_H_ */

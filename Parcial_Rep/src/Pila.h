@@ -5,17 +5,22 @@
  *      Author: Sara
  */
 
+#include "Nodo1.h"
 #ifndef PILA_H_
 #define PILA_H_
 
-namespace lab05 {
-
 class Pila {
-public:
-	Pila();
-	virtual ~Pila();
-};
 
-} /* namespace lab05 */
+public:
+	Pila ();
+    ~Pila ();
+
+		Nodo1 *pila;
+
+		void Push(Nodo1 *&, int);
+		void Pop(Nodo1 *&,  int&);
+		Nodo1 retornar(Nodo1*&p, int nuevo, int viejo);
+
+};
 
 #endif /* PILA_H_ */

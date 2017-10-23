@@ -5,17 +5,24 @@
  *      Author: Sara
  */
 
+
 #ifndef COLA_H_
 #define COLA_H_
-
-namespace lab05 {
+#include "Nodo1.h"
 
 class Cola {
-public:
-	Cola();
-	virtual ~Cola();
-};
+ 	public:
 
-} /* namespace lab05 */
+	Cola ();
+	~Cola ();
+
+	Nodo1 *frente;
+	Nodo1 *fin;
+
+	bool ValidarVacia(Nodo1 *frente);
+	void enqueue (Nodo1 *&frente, Nodo1 *&fin, int a);
+	void dequeue(Nodo1 *&frente, Nodo1 *&fin, int &a);
+	void Menu1();
+};
 
 #endif /* COLA_H_ */
